@@ -19,7 +19,7 @@ a:hover {
   text-decoration: underline;
 }
 
-/* --- SECCIÓN INICIO --- */
+/* --- ANIMACIONES DE SECCIONES --- */
 #inicio, .seccion {
   opacity: 0;
   display: none;
@@ -73,7 +73,7 @@ a:hover {
 
 /* --- BLOQUE INFERIOR --- */
 .bloque-inferior {
-  background-color: #e0e0e0de; /* tono gris */
+  background-color: #e0e0e0de;
   width: 100%;
   flex: 1;
   display: flex;
@@ -83,7 +83,7 @@ a:hover {
   padding: 40px 20px;
 }
 
-/* --- BOTONES ESTILO MODERNO --- */
+/* --- BOTONES --- */
 .boton {
   display: inline-block;
   margin: 15px;
@@ -101,9 +101,10 @@ a:hover {
   overflow: hidden;
 }
 
-/* Botón Ver Fotos - azul aguamarina */
+/* Botón Ver Fotos */
 .boton.ver-fotos {
-  background: linear-gradient(135deg, #4fc3f7, #00acc1);
+  background: linear-gradient(135deg, #8e9eab, #eef2f3);
+  color: #222;
 }
 
 .boton.ver-fotos:hover {
@@ -111,9 +112,9 @@ a:hover {
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
 
-/* Botón Contactos - verde menta y azul cielo */
+/* Botón Contactos */
 .boton.contactos {
-  background: linear-gradient(135deg, #1de9b6, #00bfa5);
+  background: linear-gradient(135deg, #43e97b, #38f9d7);
 }
 
 .boton.contactos:hover {
@@ -121,7 +122,7 @@ a:hover {
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
 
-/* Flecha al final del botón */
+/* Flecha decorativa */
 .boton::after {
   content: '→';
   position: absolute;
@@ -132,6 +133,7 @@ a:hover {
   color: rgba(255,255,255,0.9);
 }
 
+/* Botón Volver */
 .volver {
   display: block;
   margin: 40px auto 10px;
@@ -148,17 +150,18 @@ a:hover {
   background-color: #333;
 }
 
-/* --- SECCIONES --- */
+/* --- SECCIONES GENERALES --- */
 .seccion {
   padding: 40px 20px;
 }
 
-/* --- GALERÍA CON DOBLE MARCO --- */
+/* --- GALERÍA 2 COLUMNAS --- */
 .galeria {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px; /* separación entre imágenes y video */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  justify-items: center;
+  align-items: center;
   margin-top: 20px;
   max-width: 900px;
   margin-left: auto;
@@ -166,13 +169,13 @@ a:hover {
 }
 
 .marco {
-  border: 4px solid #ccc;         /* borde interno */
+  border: 4px solid #ccc;
   border-radius: 12px;
-  outline: 4px solid #0078d7;     /* borde exterior */
-  outline-offset: 6px;            /* separación entre bordes */
+  outline: 4px solid #0078d7;
+  outline-offset: 6px;
   overflow: hidden;
-  width: 250px;
-  height: 200px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s;
@@ -187,24 +190,94 @@ a:hover {
   height: 100%;
   object-fit: cover;
   transition: transform 0.5s ease;
+  cursor: zoom-in;
 }
 
 .marco:hover img,
 .marco:hover video {
-  transform: scale(1.2); /* zoom del contenido */
+  transform: scale(1.2);
 }
 
 .marco:hover {
-  transform: scale(1.05);  /* zoom del marco */
+  transform: scale(1.03);
   box-shadow: 0 8px 16px rgba(0,0,0,0.2);
 }
 
+/* --- CONTACTOS --- */
 .contacto {
   font-size: 1.2rem;
   margin: 15px;
 }
 
+/* --- LIGHTBOX (IMAGEN / VIDEO) --- */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  cursor: zoom-out;
+  overflow: hidden;
+}
+
+.lightbox.visible {
+  display: flex;
+  opacity: 1;
+}
+
+.lightbox img,
+.lightbox video {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255,255,255,0.3);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  object-fit: contain;
+  margin: auto;
+  display: none;
+  background: #000;
+}
+
+/* Estado visible */
+.lightbox.visible img,
+.lightbox.visible video {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Estado inicial */
+.lightbox img,
+.lightbox video {
+  transform: scale(0.9);
+  opacity: 0.8;
+}
+
+/* Video centrado */
+.lightbox video {
+  background: black;
+}
+
 /* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+  .bloque-superior h1 {
+    font-size: 2.5rem;
+  }
+  .bloque-superior h2 {
+    font-size: 1.2rem;
+  }
+  .galeria {
+    grid-template-columns: 1fr; /* una sola columna en pantallas pequeñas */
+    gap: 20px;
+  }
+  .marco {
+    width: 90%;
+  }
+}
+
 @media (max-width: 600px) {
   .bloque-superior h1 {
     font-size: 2rem;
@@ -216,8 +289,9 @@ a:hover {
     font-size: 1rem;
     padding: 12px 25px;
   }
-  .marco {
-    width: 90%;
-    height: 180px;
+  .lightbox img,
+  .lightbox video {
+    max-width: 95vw;
+    max-height: 80vh;
   }
 }
