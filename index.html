@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="AJ Aberturas - Fabricación y colocación de aberturas con más de 18 años de experiencia. Calidad, precisión y confianza.">
+  <title>AJ Aberturas | Taller de Aluminio y Vidrios</title>
+
+  <!-- Vincular el archivo CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Pantalla principal -->
+  <div id="inicio" class="mostrar">
+    <div class="bloque-superior">
+      <h1>AJ Aberturas</h1>
+      <h2>Carpintería de aluminio líneas Herrero, Modena, A30, A40, vidrios y piel de vidrio.</h2><br>
+      <h2>“Calidad, precisión y confianza en cada trabajo. 18 años de trayectoria.”</h2>
+    </div>
+    <div class="bloque-inferior">
+      <button class="boton ver-fotos" onclick="mostrar('fotos')">Ver Fotos</button>
+      <button class="boton contactos" onclick="mostrar('contactos')">Contactos</button>
+    </div>
+  </div>
+
+  <!-- Sección de fotos -->
+  <div id="fotos" class="seccion">
+    <h2>Galería de trabajos</h2>
+    <div class="galeria">
+      <div class="marco"><img src="fotos/foto1.jpg" alt="Trabajo 1"></div>
+      <div class="marco"><img src="fotos/foto2.jpg" alt="Trabajo 2"></div>
+      <div class="marco"><img src="fotos/foto3.jpg" alt="Trabajo 3"></div>
+      <div class="marco"><img src="fotos/foto4.jpg" alt="Trabajo 4"></div>
+      <!-- Video agregado -->
+      <div class="marco">
+        <video src="fotos/video1.mp4" controls muted preload="metadata"></video>
+      </div>
+    </div>
+    <button class="boton volver" onclick="volverInicio()">Volver al inicio</button>
+  </div>
+
+  <!-- Sección de contactos -->
+  <div id="contactos" class="seccion">
+    <h2>Contáctanos</h2>
+    <p class="contacto">📞 WhatsApp: <a href="https://wa.me/5493364326896" target="_blank">+54 9 336 432-6896</a></p>
+    <p class="contacto">📞 WhatsApp: <a href="https://wa.me/5493364270888" target="_blank">+54 9 336 427-0888</a></p>
+    <p class="contacto">📸 Instagram: <a href="https://instagram.com/talleraberturasfranco" target="_blank">@talleraberturasfranco</a></p>
+    <button class="boton volver" onclick="volverInicio()">Volver al inicio</button>
+  </div>
+
+  <!-- Vincular el archivo JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+</html>
